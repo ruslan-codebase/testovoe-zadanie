@@ -1,4 +1,6 @@
 import re
+from collections import Counter
+
 
 # 1
 def correct_text(txt: str) -> str:
@@ -18,3 +20,8 @@ def correct_text(txt: str) -> str:
         if val not in accepted_vals:
             raise ValueError('one or more keys are not accepted')
     return txt
+
+# 2
+def count_elements(l: list) -> list:
+    counts = Counter([f'{i[0]}+{i[1]}' for i in l])
+    return [[i.split('+')[0], int(i.split('+')[1]), j] for i,j in counts.items()]

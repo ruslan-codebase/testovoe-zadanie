@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.solution import correct_text
+from src.solution import correct_text, count_elements
 
 
 class TestSolution(TestCase):
@@ -21,3 +21,19 @@ class TestSolution(TestCase):
             correct_text(bad_key)
             self.assertEqual('one or more keys are not accepted', ctx.exception)
         self.assertEqual(good_txt, correct_text(good_txt))
+
+    def test_count_elements(self):
+        l = [
+            ['665587', 2],
+            ['669532', 1],
+            ['669537', 2],
+            ['669532', 1],
+            ['665587', 1]
+        ]
+        expected = [
+            ['665587', 2, 1],
+            ['669532', 1, 2],
+            ['669537', 2, 1],
+            ['665587', 1, 1]
+        ]
+        self.assertEqual(expected, count_elements(l))
