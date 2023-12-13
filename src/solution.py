@@ -25,3 +25,12 @@ def correct_text(txt: str) -> str:
 def count_elements(l: list) -> list:
     counts = Counter([f'{i[0]}+{i[1]}' for i in l])
     return [[i.split('+')[0], int(i.split('+')[1]), j] for i,j in counts.items()]
+
+
+# 3
+def json_diff(old, new, diff_list):
+    diffs = {}
+    for key in diff_list:
+        if old.get('data').get(key) != new.get('data').get(key):
+            diffs[key]=new.get('data').get(key)
+    return diffs
